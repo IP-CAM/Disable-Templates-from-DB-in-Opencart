@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <name>disable_templates_from_db</name>
+    <code>disable_templates_from_db</code>
+    <description>Disable loading templates from DB</description>
+    <version>1.0.0</version>
+    <author><![CDATA[Ivan Stasiuk<br/><a href="https://stasi.uk">Get Help</a>]]> </author>
+    <link>https://stasi.uk</link>
+
+    <file path="catalog/controller/event/theme.php">
+        <operation error="skip">
+            <search><![CDATA[$theme_info = $this->model_design_theme->getTheme($route, $theme);]]></search>
+            <add position="replace"><![CDATA[
+                /* DISABLE_TEMPLATES_FROM_DB START */
+                $theme_info = false;
+                /* DISABLE_TEMPLATES_FROM_DB END */
+            ]]></add>
+        </operation>
+    </file>
+
+</modification>
